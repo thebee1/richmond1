@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Meta dynamiques -->
+    <title id="meta-title">Richmond KONAN — Portfolio</title>
+    <meta id="meta-desc" name="description" content="">
+    <meta id="meta-keywords" name="keywords" content="">
+    <meta name="author" content="Richmond KONAN">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta name="color-scheme" content="dark">
+
+    <!-- Open Graph dynamique -->
+    <meta id="og-type" property="og:type" content="website">
+    <meta id="og-title" property="og:title" content="">
+    <meta id="og-desc" property="og:description" content="">
+    <meta id="og-url" property="og:url" content="">
+    <meta id="og-site" property="og:site_name" content="">
+    <meta id="og-image" property="og:image" content="">
+    <meta id="og-locale" property="og:locale" content="fr_FR">
+
+    <!-- Twitter Cards dynamique -->
+    <meta id="tw-card" name="twitter:card" content="summary_large_image">
+    <meta id="tw-title" name="twitter:title" content="">
+    <meta id="tw-desc" name="twitter:description" content="">
+    <meta id="tw-image" name="twitter:image" content="">
+
+    <!-- Schema.org dynamique -->
+    <script id="schema-json" type="application/ld+json"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"></noscript>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiUmljaG1vbmQgS09OQU4gLSBQb3J0Zm9saW8iLCJzaG9ydF9uYW1lIjoiUmljaG1vbmQgS09OQU4iLCJzdGFydF91cmwiOiIuIiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiIzBhMGEwYSIsInRoZW1lX2NvbG9yIjoiI2M5YTk2ZSJ9">
+
+    <style>
+        :root {
+            --noir: #0a0a0a; --gris-fonce: #121212; --gris: #a0a0a0;
+            --gris-clair: #d4d4d4; --blanc: #f5f5f5; --accent: #c9a96e;
+            --accent-hover: #b8954a; --accent-dim: rgba(201,169,110,0.08);
+            --glass: rgba(255,255,255,0.04); --glass-border: rgba(255,255,255,0.08);
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.15); --shadow-md: 0 10px 35px rgba(0,0,0,0.22);
+            --shadow-lg: 0 20px 50px rgba(0,0,0,0.35); --radius-sm: 12px;
+            --radius-md: 16px; --radius-lg: 20px; --radius-full: 50px;
+            --transition-fast: 0.2s ease; --transition-base: 0.3s ease; --transition-slow: 0.5s ease;
+            --nav-height: 72px; --nav-height-scrolled: 56px;
+        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: var(--nav-height); }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif; background: var(--noir);
+            color: var(--blanc); line-height: 1.65; overflow-x: hidden;
+            -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+            background-image:
+                radial-gradient(circle at 15% 20%, rgba(201,169,110,0.07), transparent 35%),
+                radial-gradient(circle at 85% 80%, rgba(255,255,255,0.03), transparent 30%);
+        }
+        ::selection { background: rgba(201,169,110,0.3); color: var(--blanc); }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--noir); }
+        ::-webkit-scrollbar-thumb { background: var(--gris-fonce); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+        .skip-link {
+            position: absolute; top: -100%; left: 50%; transform: translateX(-50%);
+            padding: 0.75rem 1.5rem; background: var(--accent); color: var(--noir);
+            font-weight: 600; border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+            z-index: 10000; text-decoration: none; transition: top var(--transition-fast);
+        }
+        .skip-link:focus { top: 0; outline: 3px solid var(--blanc); outline-offset: -3px; }
+
+        nav {
+            position: fixed; top: 0; width: 100%; height: var(--nav-height);
+            padding: 0 4rem; display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000; background: var(--glass);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid var(--glass-border); box-shadow: var(--shadow-md);
+            transition: all var(--transition-base);
+        }
+        nav.scrolled { height: var(--nav-height-scrolled); background: rgba(16,16,16,0.92); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+
+        .logo { font-family: 'Playfair Display', Georgia, serif; font-size: 1.5rem; font-weight: 400; color: var(--blanc); text-decoration: none; letter-spacing: 1px; transition: transform var(--transition-fast); }
+        .logo:hover { transform: scale(1.02); }
+        .logo span { color: var(--accent); }
+
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-links a { color: var(--gris); text-decoration: none; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.8px; text-transform: uppercase; transition: color var(--transition-base); position: relative; padding: 0.5rem 0; }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--accent); transition: width var(--transition-base); border-radius: 2px; }
+        .nav-links a:hover, .nav-links a:focus, .nav-links a.active { color: var(--blanc); outline: none; }
+        .nav-links a:hover::after, .nav-links a:focus::after, .nav-links a.active::after { width: 100%; }
+        .nav-links a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 2px; }
+
+        .menu-toggle { display: none; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.15); background: transparent; color: var(--blanc); align-items: center; justify-content: center; cursor: pointer; font-size: 1.2rem; transition: all var(--transition-fast); }
+        .menu-toggle:hover { border-color: var(--accent); color: var(--accent); }
+        .menu-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+        .hero { min-height: 100dvh; display: flex; align-items: center; padding: calc(var(--nav-height) + 2rem) 4rem 4rem; position: relative; overflow: hidden; isolation: isolate; }
+        .hero::before { content: ''; position: absolute; top: -30%; right: -5%; width: 600px; height: 600px; background: radial-gradient(circle, rgba(201,169,110,0.07) 0%, transparent 65%); border-radius: 50%; pointer-events: none; animation: pulse-glow 6s ease-in-out infinite; }
+        @keyframes pulse-glow { 0%,100% { opacity: 0.6; transform: scale(1); } 50% { opacity: 1; transform: scale(1.08); } }
+        .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(100deg, rgba(10,10,10,0.97) 0%, rgba(10,10,10,0.75) 55%, rgba(10,10,10,0.35) 100%); z-index: 0; pointer-events: none; }
+        .hero-content { max-width: 640px; z-index: 2; }
+        .hero-tag { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.45rem 1.3rem; background: var(--accent-dim); border: 1px solid rgba(201,169,110,0.2); color: var(--accent); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2.5px; border-radius: var(--radius-full); margin-bottom: 1.8rem; animation: fadeInUp 0.8s ease both; }
+        .hero-tag::before { content: ''; width: 6px; height: 6px; background: var(--accent); border-radius: 50%; animation: blink 2s ease-in-out infinite; }
+        @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+        .hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2.2rem, 5vw, 4.2rem); font-weight: 400; line-height: 1.08; margin-bottom: 1.4rem; animation: fadeInUp 0.8s ease 0.15s both; }
+        .hero h1 em { color: var(--accent); font-style: italic; }
+        .hero p { font-size: clamp(1rem, 1.5vw, 1.15rem); color: var(--gris); max-width: 500px; margin-bottom: 2.5rem; animation: fadeInUp 0.8s ease 0.3s both; }
+        .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeInUp 0.8s ease 0.45s both; }
+
+        .btn { padding: 0.9rem 2.2rem; font-size: 0.85rem; font-weight: 500; text-decoration: none; border-radius: var(--radius-full); transition: all var(--transition-base); cursor: pointer; border: none; display: inline-flex; align-items: center; gap: 0.5rem; position: relative; overflow: hidden; font-family: inherit; }
+        .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+        .btn-primary { background: var(--accent); color: var(--noir); box-shadow: 0 4px 15px rgba(201,169,110,0.25); }
+        .btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 12px 35px rgba(201,169,110,0.35); }
+        .btn-primary:active { transform: translateY(0); }
+        .btn-secondary { background: rgba(255,255,255,0.04); color: var(--blanc); border: 1px solid rgba(255,255,255,0.12); backdrop-filter: blur(12px); }
+        .btn-secondary:hover { border-color: rgba(255,255,255,0.35); background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+
+        .hero-image { position: absolute; right: 5%; top: 50%; transform: translateY(-50%); width: 380px; height: 480px; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.02); backdrop-filter: blur(12px); box-shadow: var(--shadow-lg); animation: fadeIn 1s ease 0.5s both; display: flex; align-items: center; justify-content: center; z-index: 1; }
+        .hero-image .avatar-placeholder { font-size: 5rem; opacity: 0.35; color: var(--accent); filter: drop-shadow(0 0 30px rgba(201,169,110,0.2)); }
+        .hero-image::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 45%; background: linear-gradient(to top, var(--noir), transparent); }
+
+        section { padding: 7rem 4rem; position: relative; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-tag { color: var(--accent); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 3.5px; margin-bottom: 0.8rem; display: block; font-weight: 500; }
+        .section-title { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 400; margin-bottom: 0.8rem; }
+        .section-subtitle { color: var(--gris); max-width: 600px; margin: 0 auto; font-size: 1.02rem; }
+
+        .projets-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 2rem; }
+        .projet-card { background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.015)); backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%); border-radius: var(--radius-md); overflow: hidden; transition: all var(--transition-slow); border: 1px solid rgba(255,255,255,0.06); box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), var(--shadow-sm); text-decoration: none; color: inherit; display: block; }
+        .projet-card:hover { transform: translateY(-8px) scale(1.01); border-color: rgba(201,169,110,0.25); box-shadow: 0 25px 55px rgba(0,0,0,0.45); }
+        .projet-card:focus-within { border-color: var(--accent); outline: none; }
+        .projet-image { width: 100%; height: 210px; overflow: hidden; position: relative; background: var(--gris-fonce); display: flex; align-items: center; justify-content: center; color: var(--gris); font-size: 0.8rem; }
+        .projet-image .icon-large { font-size: 3.2rem; opacity: 0.25; transition: transform var(--transition-slow); }
+        .projet-card:hover .projet-image .icon-large { transform: scale(1.1) rotate(-3deg); }
+        .projet-image img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--transition-slow); }
+        .projet-card:hover .projet-image img { transform: scale(1.08); }
+        .projet-info { padding: 1.6rem; }
+        .projet-categorie { color: var(--accent); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; }
+        .projet-titre { font-family: 'Playfair Display', Georgia, serif; font-size: 1.25rem; font-weight: 400; margin: 0.35rem 0 0.5rem; }
+        .projet-desc { color: var(--gris); font-size: 0.92rem; line-height: 1.6; }
+        .projet-link { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1rem; color: var(--accent); font-size: 0.82rem; font-weight: 500; text-decoration: none; transition: gap var(--transition-fast); }
+        .projet-link:hover { gap: 0.7rem; }
+        .projet-link::after { content: '→'; }
+
+        /* Compétences : on utilise une liste ul */
+        .skills-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+            list-style: none;
+            padding: 0;
+        }
+        .skill-card {
+            background: var(--gris-fonce);
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all var(--transition-base);
+            position: relative;
+            overflow: hidden;
+        }
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0;
+            transition: opacity var(--transition-base);
+        }
+        .skill-card:hover::before { opacity: 1; }
+        .skill-card:hover {
+            border-color: rgba(201,169,110,0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+        }
+        .skill-icon { font-size: 2.4rem; margin-bottom: 0.9rem; display: block; color: var(--accent); }
+        .skill-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .skill-card p { color: var(--gris); font-size: 0.88rem; }
+
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .about-image { position: relative; border-radius: var(--radius-lg); overflow: hidden; background: var(--gris-fonce); aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; color: var(--gris); font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.05); transition: transform var(--transition-slow); }
+        .about-image:hover { transform: translateY(-4px); }
+        .about-image .icon-large { font-size: 4rem; opacity: 0.2; }
+        .about-image::before { content: ''; position: absolute; top: 20px; left: 20px; right: -20px; bottom: -20px; border: 2px solid var(--accent); border-radius: var(--radius-lg); z-index: -1; opacity: 0.15; transition: all var(--transition-slow); }
+        .about-image:hover::before { opacity: 0.3; transform: translate(-5px, -5px); }
+        .about-content h2 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(1.6rem, 3vw, 2.3rem); margin-bottom: 1.2rem; }
+        .about-content p { color: var(--gris); margin-bottom: 1.2rem; font-size: 1.02rem; }
+        .about-content strong { color: var(--blanc); font-weight: 600; }
+        .competences-list { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.5rem; }
+        .competence-tag { padding: 0.5rem 1.2rem; background: var(--accent-dim); border: 1px solid rgba(201,169,110,0.15); color: var(--accent); border-radius: var(--radius-full); font-size: 0.8rem; font-weight: 500; transition: all var(--transition-fast); cursor: default; }
+        .competence-tag:hover { background: rgba(201,169,110,0.15); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(201,169,110,0.15); }
+
+        .contact-section { background: var(--gris-fonce); text-align: center; }
+        .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; max-width: 900px; margin: 2.5rem auto 0; }
+        .contact-item { padding: 1.5rem; transition: transform var(--transition-base); }
+        .contact-item:hover { transform: translateY(-4px); }
+        .contact-icon { width: 56px; height: 56px; background: var(--accent-dim); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.4rem; color: var(--accent); transition: all var(--transition-base); border: 1px solid rgba(201,169,110,0.1); }
+        .contact-item:hover .contact-icon { background: rgba(201,169,110,0.15); transform: scale(1.08); box-shadow: 0 0 20px rgba(201,169,110,0.15); }
+        .contact-item h3 { font-size: 0.95rem; margin-bottom: 0.4rem; font-weight: 600; }
+        .contact-item a { color: var(--gris); text-decoration: none; transition: color var(--transition-base); font-size: 0.92rem; position: relative; }
+        .contact-item a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px; background: var(--accent); transition: width var(--transition-base); }
+        .contact-item a:hover { color: var(--accent); }
+        .contact-item a:hover::after { width: 100%; }
+        .contact-item a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+        .contact-item span { color: var(--gris); font-size: 0.92rem; }
+
+        .social-links { display: flex; justify-content: center; gap: 1.2rem; margin-top: 2.5rem; }
+        .social-links a { width: 48px; height: 48px; border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gris); text-decoration: none; transition: all var(--transition-base); font-size: 1.1rem; position: relative; }
+        .social-links a:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-4px); box-shadow: 0 8px 20px rgba(201,169,110,0.15); }
+        .social-links a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+        .contact-form-wrapper { max-width: 600px; margin: 3rem auto 0; text-align: left; }
+        .form-group { margin-bottom: 1.3rem; }
+        .form-group label { display: block; font-size: 0.82rem; font-weight: 500; color: var(--gris-clair); margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .form-group input, .form-group textarea { width: 100%; padding: 0.9rem 1.1rem; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-sm); color: var(--blanc); font-family: inherit; font-size: 0.95rem; transition: all var(--transition-base); }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--accent); background: rgba(255,255,255,0.06); box-shadow: 0 0 0 3px rgba(201,169,110,0.1); }
+        .form-group textarea { min-height: 140px; resize: vertical; }
+        .form-group input::placeholder, .form-group textarea::placeholder { color: var(--gris); opacity: 0.6; }
+        .form-status { margin-top: 1rem; padding: 0.8rem 1.2rem; border-radius: var(--radius-sm); font-size: 0.9rem; display: none; animation: fadeInUp 0.4s ease; }
+        .form-status.success { background: rgba(34,197,94,0.1); color: #4ade80; border: 1px solid rgba(34,197,94,0.2); display: block; }
+        .form-status.error { background: rgba(239,68,68,0.1); color: #f87171; border: 1px solid rgba(239,68,68,0.2); display: block; }
+
+        .back-to-top { position: fixed; bottom: 2rem; right: 2rem; width: 48px; height: 48px; border-radius: 50%; background: var(--accent); color: var(--noir); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; opacity: 0; transform: translateY(20px); transition: all var(--transition-base); z-index: 999; box-shadow: 0 4px 15px rgba(201,169,110,0.3); }
+        .back-to-top.visible { opacity: 1; transform: translateY(0); }
+        .back-to-top:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(201,169,110,0.4); }
+        .back-to-top:focus-visible { outline: 2px solid var(--blanc); outline-offset: 2px; }
+
+        footer { text-align: center; padding: 2.5rem; border-top: 1px solid rgba(255,255,255,0.04); color: var(--gris); font-size: 0.82rem; }
+        footer span { color: var(--accent); }
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } .hero-tag::before, .hero::before { animation: none; } }
+
+        @media (max-width: 1024px) { .about-grid { grid-template-columns: 1fr; gap: 3rem; } .contact-grid { grid-template-columns: 1fr; gap: 1.5rem; } .hero-image { width: 320px; height: 400px; right: 2%; } }
+        @media (max-width: 768px) {
+            nav { padding: 0 1.25rem; }
+            .nav-links { position: fixed; top: var(--nav-height); left: 1rem; right: 1rem; flex-direction: column; gap: 0; padding: 0.5rem; background: rgba(18,18,18,0.98); border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.06); box-shadow: var(--shadow-lg); transform: translateY(-10px); opacity: 0; pointer-events: none; transition: all var(--transition-base); display: flex; }
+            .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: all; }
+            .nav-links a { padding: 1rem 1.2rem; border-radius: var(--radius-sm); }
+            .nav-links a:hover { background: rgba(255,255,255,0.03); }
+            .nav-links a::after { display: none; }
+            .menu-toggle { display: inline-flex; }
+            .hero { padding: calc(var(--nav-height) + 1.5rem) 1.25rem 3rem; min-height: auto; align-items: flex-start; }
+            .hero-image { display: none; }
+            .hero-buttons { flex-direction: column; align-items: stretch; }
+            .btn { justify-content: center; }
+            section { padding: 4rem 1.25rem; }
+            .projets-grid { grid-template-columns: 1fr; }
+            .skills-list { grid-template-columns: 1fr 1fr; }
+            .contact-form-wrapper { margin-top: 2rem; }
+        }
+        @media (max-width: 480px) { .skills-list { grid-template-columns: 1fr; } .contact-grid { gap: 1rem; } .back-to-top { bottom: 1rem; right: 1rem; width: 42px; height: 42px; } }
+    </style>
+</head>
+<body>
+
+<a href="#accueil" class="skip-link">Aller au contenu principal</a>
+
+<nav id="navbar" role="navigation" aria-label="Navigation principale">
+    <a href="#accueil" class="logo">Rich<span>mond</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navLinks">☰</button>
+    <ul class="nav-links" id="navLinks" role="menubar"></ul>
+</nav>
+
+<header class="hero" id="accueil">
+    <div class="hero-content" id="hero-content"></div>
+    <div class="hero-image" id="hero-image" aria-hidden="true"></div>
+</header>
+
+<main>
+<section id="projets" aria-labelledby="projets-title">
+    <div class="section-header reveal" id="projets-header"></div>
+    <div class="projets-grid" id="projets-grid"></div>
+</section>
+
+<section id="competences" aria-labelledby="competences-title" style="background: var(--gris-fonce);">
+    <div class="section-header reveal" id="competences-header"></div>
+    <ul class="skills-list" id="skills-list" role="list"></ul> <!-- Changement : ul -->
+</section>
+
+<section id="apropos" aria-labelledby="apropos-title">
+    <div class="about-grid">
+        <div class="about-image reveal" id="about-image" aria-hidden="true"></div>
+        <div class="about-content reveal" id="about-content"></div>
+    </div>
+</section>
+
+<section id="contact" class="contact-section" aria-labelledby="contact-title">
+    <div class="section-header reveal" id="contact-header"></div>
+    <div class="contact-grid" id="contact-grid"></div>
+    <div class="contact-form-wrapper reveal" id="contact-form-wrapper"></div>
+    <div class="social-links reveal" id="social-links"></div>
+</section>
+</main>
+
+<footer id="footer"></footer>
+<button class="back-to-top" id="backToTop" aria-label="Retour en haut de page">↑</button>
+
+<script>
+// ===== DONNÉES FALLBACK (au cas où data.json n'est pas accessible) =====
+const fallbackData = {
+    "meta": {
+        "title": "Richmond KONAN — Technicien Informatique & Développeur Web | Portfolio",
+        "description": "Portfolio de Richmond KONAN, technicien supérieur en informatique certifié Beemo Niv.3 et n8n. Créateur de sites web, plateformes et solutions IT en Côte d'Ivoire.",
+        "keywords": "Richmond KONAN, technicien informatique, Côte d'Ivoire, Abidjan, développement web, maintenance, réseaux, n8n, cloud, Beemo, portfolio",
+        "author": "Richmond KONAN",
+        "theme_color": "#0a0a0a",
+        "locale": "fr_FR",
+        "og": {
+            "type": "website",
+            "title": "Richmond KONAN — Technicien Informatique & Développeur Web",
+            "description": "Technicien supérieur certifié en sauvegarde (Beemo Niv.3) et automatisation (n8n). Créateur de sites web et plateformes en Côte d'Ivoire.",
+            "url": "https://richmondkonan.dev",
+            "site_name": "Richmond KONAN Portfolio",
+            "image": "https://richmondkonan.dev/assets/og-image.jpg"
+        },
+        "twitter": {
+            "card": "summary_large_image",
+            "title": "Richmond KONAN — Technicien Informatique",
+            "description": "Créateur de sites web, plateformes et solutions IT en Côte d'Ivoire.",
+            "image": "https://richmondkonan.dev/assets/og-image.jpg"
+        }
+    },
+    "schema": {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Richmond KONAN Kouassi",
+        "jobTitle": "Technicien Informatique & Développeur Web",
+        "description": "Technicien supérieur certifié en sauvegarde (Beemo Niv.3) et en automatisation (n8n). Créateur de sites web et plateformes.",
+        "url": "https://richmondkonan.dev",
+        "email": "konanrichmond1234@gmail.com",
+        "telephone": "+2250711070001",
+        "address": {"@type": "PostalAddress", "addressLocality": "Abidjan", "addressCountry": "CI"},
+        "knowsAbout": ["Développement web", "Maintenance informatique", "Réseaux", "Sauvegarde", "Automatisation n8n", "Cloud", "Design web"],
+        "alumniOf": {"@type": "EducationalOrganization", "name": "Institut de Formation en Systèmes Électroniques et Informatiques"}
+    },
+    "nav": {
+        "logo": "Rich",
+        "logo_accent": "mond",
+        "links": [
+            {"label": "Projets", "href": "#projets"},
+            {"label": "Compétences", "href": "#competences"},
+            {"label": "À propos", "href": "#apropos"},
+            {"label": "Contact", "href": "#contact"}
+        ]
+    },
+    "hero": {
+        "tag": "Technicien informatique & Développeur web",
+        "title": "KONAN <em>Richmond</em> Kouassi",
+        "description": "Technicien supérieur certifié en sauvegarde (Beemo Niv.3) et en automatisation (n8n). Je conçois des sites web, des plateformes et des solutions IT sur mesure en Côte d'Ivoire.",
+        "buttons": [
+            {"label": "Voir mes projets", "href": "#projets", "style": "primary"},
+            {"label": "Me contacter", "href": "#contact", "style": "secondary"}
+        ],
+        "avatar": "👨‍💻"
+    },
+    "projets": {
+        "section_tag": "Réalisations",
+        "title": "Mes projets",
+        "subtitle": "Sites web, plateformes et solutions digitaux créés pour des clients et des projets personnels.",
+        "items": [
+            {"id": "mariam1", "categorie": "Portfolio Créatif", "titre": "Zamblé Lou Mariam", "description": "Portfolio élégant pour une étudiante en Communication Visuelle. Design graphique, photographie et direction artistique avec une identité visuelle dorée raffinée.", "icon": "🎨", "url": "https://thebee1.github.io/MARIAM1/", "external": true, "image": "zamblé.png"},
+            {"id": "fosco", "categorie": "Site Vitrine Entreprise", "titre": "FOSCO SARL", "description": "Site vitrine pour une entreprise ivoirienne de fournitures et services. Mobilier de bureau, EPI, NFI, logistique — 10+ ans d'expérience, 200+ clients satisfaits.", "icon": "🏢", "url": "https://thebee1.github.io/FOSCOSARL/", "external": true, "image": "FOSCO.png"},
+            {"id": "tarification", "categorie": "Page Commerciale", "titre": "Tarification INTELLIGENZ", "description": "Grille tarifaire complète pour une société IT. Forfaits maintenance (50K–300K FCFA/mois), prestations à la carte, antivirus Kaspersky et ERP Odoo.", "icon": "💰", "url": "https://thebee1.github.io/Tarification/", "external": true, "image": "Tarification.png"},
+            {"id": "igtech", "categorie": "Plateforme Web", "titre": "IG.Tech", "description": "Plateforme de mise en relation artisans–clients. Plomberie, électricité, dépannage informatique, jardinage. Profils vérifiés, demandes gratuites, réponses rapides.", "icon": "🔗", "url": "https://thebee1.github.io/IG.Tech/index.html", "external": true, "image": "IGT.png"},
+            {"id": "n8n", "categorie": "Automatisation", "titre": "Workflow n8n", "description": "Création de workflows automatisés pour la collecte de données, l'intégration d'API et l'orchestration d'outils d'IA en production.", "icon": "⚙️", "url": null, "external": false},
+            {"id": "cisco", "categorie": "Réseaux", "titre": "Simulation Cisco", "description": "Configuration avancée de VLAN, routage inter-VLAN, DHCP et dépannage réseau sous Cisco Packet Tracer pour des infrastructures d'entreprise.", "icon": "🖥️", "url": null, "external": false}
+        ]
+    },
+    "competences": {
+        "section_tag": "Expertise",
+        "title": "Mes compétences",
+        "subtitle": "Des domaines variés pour une polyvalence complète, du développement web à l'infrastructure IT.",
+        "items": [
+            {"icon": "💻", "titre": "Développement Web", "desc": "Conception de sites vitrines, portfolios et plateformes avec HTML5, CSS3, JavaScript et responsive design."},
+            {"icon": "🌐", "titre": "Réseaux & Connectivité", "desc": "LAN/WAN, Wi-Fi, TCP/IP, fibre optique, Cisco Packet Tracer, configuration et dépannage."},
+            {"icon": "💾", "titre": "Sauvegarde & Sécurité", "desc": "Beemo Niv.1,2,3 : backup, restauration, migration Cloud, protection des données critiques."},
+            {"icon": "📄", "titre": "Bureautique", "desc": "Suite Microsoft Office (Word, Excel, PowerPoint) avancée pour reporting et présentations."},
+            {"icon": "⚡", "titre": "Automatisation", "desc": "Workflows n8n, intégration d'API, automatisation de tâches répétitives et outils d'IA."},
+            {"icon": "🛠️", "titre": "Support & Maintenance", "desc": "Installation, diagnostic, optimisation hardware/software, gestion de parc informatique."}
+        ]
+    },
+    "about": {
+        "section_tag": "Biographie",
+        "title": "À propos de moi",
+        "paragraphs": [
+            "Technicien supérieur en systèmes électroniques et informatiques, certifié Administrateur de Sauvegarde (Beemo Niv.3) et formé à l'automatisation de flux de travail avec <strong>n8n</strong>.",
+            "En parallèle, je conçois des <strong>sites web et des plateformes digitales</strong> pour des clients en Côte d'Ivoire — du portfolio créatif à la plateforme de mise en relation artisans–clients. Rigoureux, réactif et orienté résultat, je mets ma polyvalence au service des équipes pour garantir la continuité et la performance des systèmes informatiques."
+        ],
+        "tags": ["HTML / CSS / JS", "Responsive Design", "Windows / Linux", "Maintenance", "Réseaux", "n8n", "Cloud", "Beemo Niv.3", "Photoshop", "Proteus"],
+        "avatar": "👨‍💻"
+    },
+    "contact": {
+        "section_tag": "Contact",
+        "title": "Travaillons ensemble",
+        "subtitle": "Vous avez un projet web, une mission IT ou une idée à concrétiser ? N'hésitez pas à me contacter.",
+        "items": [
+            {"icon": "📱", "label": "Téléphone", "value": "(+225) 07 11 07 00 01", "href": "tel:+2250711070001", "type": "link"},
+            {"icon": "✉️", "label": "Email", "value": "konanrichmond1234@gmail.com", "href": "mailto:konanrichmond1234@gmail.com", "type": "link"},
+            {"icon": "📍", "label": "Localisation", "value": "Abidjan, Côte d'Ivoire", "href": null, "type": "text"}
+        ],
+        "form": {
+            "fields": [
+                {"id": "name", "label": "Nom complet", "type": "text", "placeholder": "Votre nom", "required": true, "autocomplete": "name"},
+                {"id": "email", "label": "Adresse email", "type": "email", "placeholder": "votre@email.com", "required": true, "autocomplete": "email"},
+                {"id": "subject", "label": "Sujet", "type": "text", "placeholder": "Sujet de votre message", "required": true, "autocomplete": null},
+                {"id": "message", "label": "Message", "type": "textarea", "placeholder": "Décrivez votre projet ou votre demande...", "required": true, "autocomplete": null}
+            ],
+            "submit_label": "Envoyer le message",
+            "success_msg": "Message envoyé avec succès ! Je vous répondrai dans les plus brefs délais.",
+            "error_msg_empty": "Veuillez remplir tous les champs.",
+            "error_msg_email": "Veuillez entrer une adresse email valide."
+        },
+        "social": [
+            {"icon": "🔗", "label": "LinkedIn", "url": "https://linkedin.com/in/richmondkonan"},
+            {"icon": "🐙", "label": "GitHub", "url": "https://github.com/thebee1"},
+            {"icon": "🐦", "label": "Twitter", "url": "https://twitter.com/richmondkonan"}
+        ]
+    },
+    "footer": {
+        "line1": "© <span id=\"year\"></span> <span>Richmond KONAN</span> — Technicien Informatique & Développeur Web",
+        "line2": "Conçu avec soin à Abidjan, Côte d'Ivoire"
+    }
+};
+
+// ===== FONCTIONS DE RENDU =====
+
+function setMeta(data) {
+    const m = data.meta;
+    document.getElementById('meta-title').textContent = m.title;
+    document.getElementById('meta-desc').setAttribute('content', m.description);
+    document.getElementById('meta-keywords').setAttribute('content', m.keywords);
+
+    document.getElementById('og-type').setAttribute('content', m.og.type);
+    document.getElementById('og-title').setAttribute('content', m.og.title);
+    document.getElementById('og-desc').setAttribute('content', m.og.description);
+    document.getElementById('og-url').setAttribute('content', m.og.url);
+    document.getElementById('og-site').setAttribute('content', m.og.site_name);
+    document.getElementById('og-image').setAttribute('content', m.og.image);
+    document.getElementById('og-locale').setAttribute('content', m.locale);
+
+    document.getElementById('tw-card').setAttribute('content', m.twitter.card);
+    document.getElementById('tw-title').setAttribute('content', m.twitter.title);
+    document.getElementById('tw-desc').setAttribute('content', m.twitter.description);
+    document.getElementById('tw-image').setAttribute('content', m.twitter.image);
+
+    document.getElementById('schema-json').textContent = JSON.stringify(data.schema);
+}
+
+function renderNav(data) {
+    const nav = data.nav;
+    document.querySelector('.logo').innerHTML = nav.logo + '<span>' + nav.logo_accent + '</span>';
+    const ul = document.getElementById('navLinks');
+    ul.innerHTML = nav.links.map(l => 
+        '<li role="none"><a href="' + l.href + '" role="menuitem">' + l.label + '</a></li>'
+    ).join('');
+}
+
+function renderHero(data) {
+    const h = data.hero;
+    document.getElementById('hero-content').innerHTML = 
+        '<span class="hero-tag">' + h.tag + '</span>' +
+        '<h1>' + h.title + '</h1>' +
+        '<p>' + h.description + '</p>' +
+        '<div class="hero-buttons">' + h.buttons.map(b => 
+            '<a href="' + b.href + '" class="btn btn-' + b.style + '">' + b.label + '</a>'
+        ).join('') + '</div>';
+    document.getElementById('hero-image').innerHTML = '<span class="avatar-placeholder">' + h.avatar + '</span>';
+}
+
+function renderProjets(data) {
+    const p = data.projets;
+    document.getElementById('projets-header').innerHTML = 
+        '<span class="section-tag">' + p.section_tag + '</span>' +
+        '<h2 class="section-title" id="projets-title">' + p.title + '</h2>' +
+        '<p class="section-subtitle">' + p.subtitle + '</p>';
+
+    document.getElementById('projets-grid').innerHTML = p.items.map(item => {
+        const tag = item.url ? 'a' : 'article';
+        const attrs = item.url ? 'href="' + item.url + '" target="_blank" rel="noopener noreferrer"' : '';
+        const link = item.url ? '<span class="projet-link">Visiter le site</span>' : '';
+        // Construction de l'image avec fallback si erreur de chargement
+        const imageContent = item.image 
+            ? '<img src="' + item.image + '" alt="Capture d\'écran du projet : ' + item.titre + '" onerror="this.onerror=null; this.style.display=\'none\'; this.parentElement.querySelector(\'.icon-large\').style.display=\'block\';">'
+            : '<span class="icon-large">' + item.icon + '</span>';
+        // On ajoute un conteneur avec l'icône cachée par défaut si l'image est présente
+        const iconFallback = item.image ? '<span class="icon-large" style="display:none;">' + item.icon + '</span>' : '';
+        return '<' + tag + ' ' + attrs + ' class="projet-card reveal">' +
+            '<div class="projet-image">' +
+                imageContent +
+                iconFallback +
+            '</div>' +
+            '<div class="projet-info">' +
+                '<span class="projet-categorie">' + item.categorie + '</span>' +
+                '<h3 class="projet-titre">' + item.titre + '</h3>' +
+                '<p class="projet-desc">' + item.description + '</p>' +
+                link +
+            '</div>' +
+        '</' + tag + '>';
+    }).join('');
+}
+
+function renderCompetences(data) {
+    const c = data.competences;
+    document.getElementById('competences-header').innerHTML = 
+        '<span class="section-tag">' + c.section_tag + '</span>' +
+        '<h2 class="section-title" id="competences-title">' + c.title + '</h2>' +
+        '<p class="section-subtitle">' + c.subtitle + '</p>';
+
+    document.getElementById('skills-list').innerHTML = c.items.map(item => 
+        '<li class="skill-card reveal" role="listitem">' +
+            '<span class="skill-icon" aria-hidden="true">' + item.icon + '</span>' +
+            '<h3>' + item.titre + '</h3>' +
+            '<p>' + item.desc + '</p>' +
+        '</li>'
+    ).join('');
+}
+
+function renderAbout(data) {
+    const a = data.about;
+    document.getElementById('about-image').innerHTML = '<span class="icon-large">' + a.avatar + '</span>';
+    document.getElementById('about-content').innerHTML = 
+        '<span class="section-tag">' + a.section_tag + '</span>' +
+        '<h2 id="apropos-title">' + a.title + '</h2>' +
+        a.paragraphs.map(p => '<p>' + p + '</p>').join('') +
+        '<div class="competences-list">' + a.tags.map(t => 
+            '<span class="competence-tag">' + t + '</span>'
+        ).join('') + '</div>';
+}
+
+function renderContact(data) {
+    const c = data.contact;
+    document.getElementById('contact-header').innerHTML = 
+        '<span class="section-tag">' + c.section_tag + '</span>' +
+        '<h2 class="section-title" id="contact-title">' + c.title + '</h2>' +
+        '<p class="section-subtitle">' + c.subtitle + '</p>';
+
+    document.getElementById('contact-grid').innerHTML = c.items.map(item => {
+        const content = item.type === 'link' 
+            ? '<a href="' + item.href + '">' + item.value + '</a>' 
+            : '<span>' + item.value + '</span>';
+        return '<div class="contact-item reveal">' +
+            '<div class="contact-icon" aria-hidden="true">' + item.icon + '</div>' +
+            '<h3>' + item.label + '</h3>' + content +
+        '</div>';
+    }).join('');
+
+    const f = c.form;
+    // Ajout d'un action exemple (Formspree) – vous pouvez remplacer l'URL
+    const actionUrl = 'https://formspree.io/f/votre_id'; // ← à personnaliser
+    document.getElementById('contact-form-wrapper').innerHTML = 
+        '<form id="contactForm" method="POST" action="' + actionUrl + '" novalidate>' +
+            f.fields.map(field => {
+                const input = field.type === 'textarea' 
+                    ? '<textarea id="' + field.id + '" name="' + field.id + '" placeholder="' + field.placeholder + '" required></textarea>'
+                    : '<input type="' + field.type + '" id="' + field.id + '" name="' + field.id + '" placeholder="' + field.placeholder + '" required' + (field.autocomplete ? ' autocomplete="' + field.autocomplete + '"' : '') + '>';
+                return '<div class="form-group">' +
+                    '<label for="' + field.id + '">' + field.label + '</label>' + input +
+                '</div>';
+            }).join('') +
+            '<button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">' + f.submit_label + '</button>' +
+            '<div class="form-status" id="formStatus" role="alert" aria-live="polite"></div>' +
+        '</form>';
+
+    document.getElementById('social-links').innerHTML = c.social.map(s => 
+        '<a href="' + s.url + '" target="_blank" rel="noopener noreferrer" aria-label="' + s.label + '">' + s.icon + '</a>'
+    ).join('');
+
+    // Stocker les messages du formulaire pour le handler
+    window.formMessages = {
+        success: f.success_msg,
+        error_empty: f.error_msg_empty,
+        error_email: f.error_msg_email
+    };
+}
+
+function renderFooter(data) {
+    const f = data.footer;
+    document.getElementById('footer').innerHTML = 
+        '<p>' + f.line1 + '</p>' +
+        '<p style="margin-top:0.5rem; font-size:0.75rem;">' + f.line2 + '</p>';
+    document.getElementById('year').textContent = new Date().getFullYear();
+}
+
+// ===== INITIALISATION =====
+
+function initPortfolio(data) {
+    setMeta(data);
+    renderNav(data);
+    renderHero(data);
+    renderProjets(data);
+    renderCompetences(data);
+    renderAbout(data);
+    renderContact(data);
+    renderFooter(data);
+    initInteractions();
+}
+
+function initInteractions() {
+    // Menu mobile
+    const toggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    const navLinkItems = navLinks.querySelectorAll('a');
+
+    function closeMenu() {
+        navLinks.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.textContent = '☰';
+    }
+
+    toggle.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', isOpen);
+        toggle.textContent = isOpen ? '✕' : '☰';
+    });
+
+    navLinkItems.forEach(link => link.addEventListener('click', closeMenu));
+
+    // Fermeture avec la touche Échap
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && navLinks.classList.contains('open')) {
+            closeMenu();
+        }
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!toggle.contains(e.target) && !navLinks.contains(e.target) && navLinks.classList.contains('open')) {
+            closeMenu();
+        }
+    });
+
+    // Navbar scroll + active section
+    const nav = document.getElementById('navbar');
+    const sections = document.querySelectorAll('section[id], header[id]');
+    const navLinksAll = document.querySelectorAll('.nav-links a');
+
+    function updateNav() {
+        const scrollY = window.scrollY;
+        nav.classList.toggle('scrolled', scrollY > 60);
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            if (scrollY >= sectionTop) current = section.getAttribute('id');
+        });
+        navLinksAll.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+        });
+    }
+    window.addEventListener('scroll', updateNav, { passive: true });
+    updateNav();
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+    reveals.forEach(el => observer.observe(el));
+
+    // Back to top
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        backToTop.classList.toggle('visible', window.scrollY > 600);
+    }, { passive: true });
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Formulaire - gestion des erreurs de validation (en plus de la validation HTML)
+    const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            // On laisse la validation HTML native faire son travail, mais on garde une vérification JS pour les messages personnalisés
+            const name = contactForm.querySelector('#name').value.trim();
+            const email = contactForm.querySelector('#email').value.trim();
+            const subject = contactForm.querySelector('#subject').value.trim();
+            const message = contactForm.querySelector('#message').value.trim();
+
+            if (!name || !email || !subject || !message) {
+                e.preventDefault(); // On empêche l'envoi si manquant (en plus de la validation HTML)
+                showStatus(window.formMessages.error_empty, 'error');
+                return;
+            }
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                e.preventDefault();
+                showStatus(window.formMessages.error_email, 'error');
+                return;
+            }
+            // Sinon, le formulaire sera soumis normalement vers l'action définie.
+            // Si vous utilisez un service comme Formspree, le message sera envoyé.
+            // Pour une simulation sans backend, on peut conserver le comportement précédent.
+            // Mais ici, on laisse la soumission réelle.
+            // Pour éviter une redirection, on peut utiliser fetch, mais on garde simple.
+        });
+    }
+
+    function showStatus(msg, type) {
+        formStatus.textContent = msg;
+        formStatus.className = 'form-status ' + type;
+        setTimeout(() => { formStatus.className = 'form-status'; }, 6000);
+    }
+}
+
+// ===== CHARGEMENT DES DONNÉES =====
+
+async function loadData() {
+    try {
+        const response = await fetch('data.json');
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        const data = await response.json();
+        initPortfolio(data);
+    } catch (err) {
+        console.warn('Impossible de charger data.json, utilisation du fallback. Erreur:', err.message);
+        initPortfolio(fallbackData);
+    }
+}
+
+// Lancer
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadData);
+} else {
+    loadData();
+}
+</script>
+
+</body>
+</html>

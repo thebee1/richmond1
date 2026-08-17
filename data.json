@@ -1,0 +1,306 @@
+{
+  "meta": {
+    "title": "Richmond KONAN — Technicien Informatique & Développeur Web | Portfolio",
+    "description": "Portfolio de Richmond KONAN, technicien supérieur en informatique certifié Beemo Niv.3 et n8n. Créateur de sites web, plateformes et solutions IT en Côte d'Ivoire.",
+    "keywords": "Richmond KONAN, technicien informatique, Côte d'Ivoire, Abidjan, développement web, maintenance, réseaux, n8n, cloud, Beemo, portfolio",
+    "author": "Richmond KONAN",
+    "theme_color": "#0a0a0a",
+    "locale": "fr_FR",
+    "og": {
+      "type": "website",
+      "title": "Richmond KONAN — Technicien Informatique & Développeur Web",
+      "description": "Technicien supérieur certifié en sauvegarde (Beemo Niv.3) et automatisation (n8n). Créateur de sites web et plateformes en Côte d'Ivoire.",
+      "url": "https://richmondkonan.dev",
+      "site_name": "Richmond KONAN Portfolio",
+      "image": "https://richmondkonan.dev/assets/og-image.jpg"
+    },
+    "twitter": {
+      "card": "summary_large_image",
+      "title": "Richmond KONAN — Technicien Informatique",
+      "description": "Créateur de sites web, plateformes et solutions IT en Côte d'Ivoire.",
+      "image": "https://richmondkonan.dev/assets/og-image.jpg"
+    }
+  },
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Richmond KONAN Kouassi",
+    "jobTitle": "Technicien Informatique & Développeur Web",
+    "description": "Technicien supérieur certifié en sauvegarde (Beemo Niv.3) et en automatisation (n8n). Créateur de sites web et plateformes.",
+    "url": "https://richmondkonan.dev",
+    "email": "konanrichmond1234@gmail.com",
+    "telephone": "+2250711070001",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Abidjan",
+      "addressCountry": "CI"
+    },
+    "knowsAbout": [
+      "Développement web",
+      "Maintenance informatique",
+      "Réseaux",
+      "Sauvegarde",
+      "Automatisation n8n",
+      "Cloud",
+      "Design web"
+    ],
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "Institut de Formation en Systèmes Électroniques et Informatiques"
+    }
+  },
+  "nav": {
+    "logo": "Richmond",
+    "logo_accent": "mond",
+    "links": [
+      {
+        "label": "Projets",
+        "href": "#projets"
+      },
+      {
+        "label": "Compétences",
+        "href": "#competences"
+      },
+      {
+        "label": "À propos",
+        "href": "#apropos"
+      },
+      {
+        "label": "Contact",
+        "href": "#contact"
+      }
+    ]
+  },
+  "hero": {
+    "tag": "Technicien informatique & Développeur web",
+    "title": "KONAN <em>Richmond</em> Kouassi",
+    "description": "Technicien supérieur certifié en sauvegarde (Beemo Niv.3) et en automatisation (n8n). Je conçois des sites web, des plateformes et des solutions IT sur mesure en Côte d'Ivoire.",
+    "buttons": [
+      {
+        "label": "Voir mes projets",
+        "href": "#projets",
+        "style": "primary"
+      },
+      {
+        "label": "Me contacter",
+        "href": "#contact",
+        "style": "secondary"
+      }
+    ],
+    "avatar": "👨‍💻"
+  },
+  "projets": {
+    "section_tag": "Réalisations",
+    "title": "Mes projets",
+    "subtitle": "Sites web, plateformes et solutions digitaux créés pour des clients et des projets personnels.",
+    "items": [
+      {
+        "id": "mariam1",
+        "categorie": "Portfolio Créatif",
+        "titre": "Zamblé Lou Mariam",
+        "description": "Portfolio élégant pour une étudiante en Communication Visuelle. Design graphique, photographie et direction artistique avec une identité visuelle dorée raffinée.",
+        "icon": "🎨",
+        "url": "https://thebee1.github.io/MARIAM1/",
+        "external": true,
+        "image": "zamblé.png"
+      },
+      {
+        "id": "tarification",
+        "categorie": "Page Commerciale",
+        "titre": "Tarification INTELLIGENZ",
+        "description": "Grille tarifaire complète pour une société IT. Forfaits maintenance (50K–300K FCFA/mois), prestations à la carte, antivirus Kaspersky et ERP Odoo.",
+        "icon": "💰",
+        "url": "https://thebee1.github.io/Tarification/",
+        "external": true,
+        "image": "Tarification.png"
+      },
+      {
+        "id": "fosco",
+        "categorie": "Site Vitrine Entreprise",
+        "titre": "FOSCO SARL",
+        "description": "Site vitrine pour une entreprise ivoirienne de fournitures et services. Mobilier de bureau, EPI, NFI, logistique — 10+ ans d'expérience, 200+ clients satisfaits.",
+        "icon": "🏢",
+        "url": "https://thebee1.github.io/FOSCOSARL/",
+        "external": true,
+        "image": "FOSCO.png"
+      },
+      {
+        "id": "igtech",
+        "categorie": "Plateforme Web",
+        "titre": "IG.Tech",
+        "description": "Plateforme de mise en relation artisans–clients. Plomberie, électricité, dépannage informatique, jardinage. Profils vérifiés, demandes gratuites, réponses rapides.",
+        "icon": "🔗",
+        "url": "https://thebee1.github.io/IG.Tech/index.html",
+        "external": true,
+        "image": null
+      },
+      {
+        "id": "n8n",
+        "categorie": "Automatisation",
+        "titre": "Workflow n8n",
+        "description": "Création de workflows automatisés pour la collecte de données, l'intégration d'API et l'orchestration d'outils d'IA en production.",
+        "icon": "⚙️",
+        "url": null,
+        "external": false,
+        "image": null
+      },
+      {
+        "id": "cisco",
+        "categorie": "Réseaux",
+        "titre": "Simulation Cisco",
+        "description": "Configuration avancée de VLAN, routage inter-VLAN, DHCP et dépannage réseau sous Cisco Packet Tracer pour des infrastructures d'entreprise.",
+        "icon": "🖥️",
+        "url": null,
+        "external": false,
+        "image": null
+      }
+    ]
+  },
+  "competences": {
+    "section_tag": "Expertise",
+    "title": "Mes compétences",
+    "subtitle": "Des domaines variés pour une polyvalence complète, du développement web à l'infrastructure IT.",
+    "items": [
+      {
+        "icon": "💻",
+        "titre": "Développement Web",
+        "desc": "Conception de sites vitrines, portfolios et plateformes avec HTML5, CSS3, JavaScript et responsive design."
+      },
+      {
+        "icon": "🌐",
+        "titre": "Réseaux & Connectivité",
+        "desc": "LAN/WAN, Wi-Fi, TCP/IP, fibre optique, Cisco Packet Tracer, configuration et dépannage."
+      },
+      {
+        "icon": "💾",
+        "titre": "Sauvegarde & Sécurité",
+        "desc": "Beemo Niv.1,2,3 : backup, restauration, migration Cloud, protection des données critiques."
+      },
+      {
+        "icon": "📄",
+        "titre": "Bureautique",
+        "desc": "Suite Microsoft Office (Word, Excel, PowerPoint) avancée pour reporting et présentations."
+      },
+      {
+        "icon": "⚡",
+        "titre": "Automatisation",
+        "desc": "Workflows n8n, intégration d'API, automatisation de tâches répétitives et outils d'IA."
+      },
+      {
+        "icon": "🛠️",
+        "titre": "Support & Maintenance",
+        "desc": "Installation, diagnostic, optimisation hardware/software, gestion de parc informatique."
+      }
+    ]
+  },
+  "about": {
+    "section_tag": "Biographie",
+    "title": "À propos de moi",
+    "paragraphs": [
+      "Technicien supérieur en systèmes électroniques et informatiques, certifié Administrateur de Sauvegarde (Beemo Niv.3) et formé à l'automatisation de flux de travail avec <strong>n8n</strong>.",
+      "En parallèle, je conçois des <strong>sites web et des plateformes digitales</strong> pour des clients en Côte d'Ivoire — du portfolio créatif à la plateforme de mise en relation artisans–clients. Rigoureux, réactif et orienté résultat, je mets ma polyvalence au service des équipes pour garantir la continuité et la performance des systèmes informatiques."
+    ],
+    "tags": [
+      "HTML / CSS / JS",
+      "Responsive Design",
+      "Windows / Linux",
+      "Maintenance",
+      "Réseaux",
+      "n8n",
+      "Cloud",
+      "Beemo Niv.3",
+      "Photoshop",
+      "Proteus"
+    ],
+    "avatar": "👨‍💻"
+  },
+  "contact": {
+    "section_tag": "Contact",
+    "title": "Travaillons ensemble",
+    "subtitle": "Vous avez un projet web, une mission IT ou une idée à concrétiser ? N'hésitez pas à me contacter.",
+    "items": [
+      {
+        "icon": "📱",
+        "label": "Téléphone",
+        "value": "(+225) 07 11 07 00 01",
+        "href": "tel:+2250711070001",
+        "type": "link"
+      },
+      {
+        "icon": "✉️",
+        "label": "Email",
+        "value": "konanrichmond1234@gmail.com",
+        "href": "mailto:konanrichmond1234@gmail.com",
+        "type": "link"
+      },
+      {
+        "icon": "📍",
+        "label": "Localisation",
+        "value": "Abidjan, Côte d'Ivoire",
+        "href": null,
+        "type": "text"
+      }
+    ],
+    "form": {
+      "fields": [
+        {
+          "id": "name",
+          "label": "Nom complet",
+          "type": "text",
+          "placeholder": "Votre nom",
+          "required": true,
+          "autocomplete": "name"
+        },
+        {
+          "id": "email",
+          "label": "Adresse email",
+          "type": "email",
+          "placeholder": "votre@email.com",
+          "required": true,
+          "autocomplete": "email"
+        },
+        {
+          "id": "subject",
+          "label": "Sujet",
+          "type": "text",
+          "placeholder": "Sujet de votre message",
+          "required": true,
+          "autocomplete": null
+        },
+        {
+          "id": "message",
+          "label": "Message",
+          "type": "textarea",
+          "placeholder": "Décrivez votre projet ou votre demande...",
+          "required": true,
+          "autocomplete": null
+        }
+      ],
+      "submit_label": "Envoyer le message",
+      "success_msg": "Message envoyé avec succès ! Je vous répondrai dans les plus brefs délais.",
+      "error_msg_empty": "Veuillez remplir tous les champs.",
+      "error_msg_email": "Veuillez entrer une adresse email valide."
+    },
+    "social": [
+      {
+        "icon": "🔗",
+        "label": "LinkedIn",
+        "url": "https://linkedin.com/in/richmondkonan"
+      },
+      {
+        "icon": "🐙",
+        "label": "GitHub",
+        "url": "https://github.com/thebee1"
+      },
+      {
+        "icon": "🐦",
+        "label": "Twitter",
+        "url": "https://twitter.com/richmondkonan"
+      }
+    ]
+  },
+  "footer": {
+    "line1": "© <span id=\"year\"></span> <span>Richmond KONAN</span> — Technicien Informatique & Développeur Web",
+    "line2": "Conçu avec soin à Abidjan, Côte d'Ivoire"
+  }
+}
