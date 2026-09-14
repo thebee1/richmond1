@@ -191,13 +191,36 @@
             transform: translateY(-5px);
             box-shadow: 0 15px 40px rgba(0,0,0,0.25);
         }
+        .skill-card.gallery-trigger { cursor: pointer; }
+        .skill-card.gallery-trigger:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
         .skill-icon { font-size: 2.4rem; margin-bottom: 0.9rem; display: block; color: var(--accent); }
         .skill-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; }
         .skill-card p { color: var(--gris); font-size: 0.88rem; }
 
+        .gallery-modal { position: fixed; inset: 0; z-index: 2000; display: none; align-items: center; justify-content: center; padding: 2rem; background: rgba(0,0,0,0.86); backdrop-filter: blur(10px); }
+        .gallery-modal.open { display: flex; }
+        .gallery-dialog { width: min(1100px, 100%); max-height: min(850px, 90vh); overflow: auto; padding: 2rem; background: var(--gris-fonce); border: 1px solid var(--glass-border); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); position: relative; }
+        .gallery-dialog h2 { font-family: 'Playfair Display', Georgia, serif; font-weight: 400; margin-bottom: 1.5rem; padding-right: 3rem; }
+        .gallery-close { position: absolute; top: 1rem; right: 1rem; width: 42px; height: 42px; border: 1px solid var(--glass-border); border-radius: 50%; background: transparent; color: var(--blanc); cursor: pointer; font-size: 1.4rem; }
+        .gallery-close:hover, .gallery-close:focus-visible { border-color: var(--accent); color: var(--accent); }
+        .gallery-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+        .gallery-grid img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius-sm); border: 1px solid var(--glass-border); transition: transform var(--transition-fast), border-color var(--transition-fast); cursor: zoom-in; }
+        .gallery-grid img:hover { transform: scale(1.03); border-color: var(--accent); }
+        .realisations-section { background: var(--noir); }
+        .realisations-grid { max-width: 1200px; margin: 0 auto; }
+        .image-viewer { position: fixed; inset: 0; z-index: 2100; display: none; align-items: center; justify-content: center; padding: 2rem; background: rgba(0,0,0,0.94); }
+        .image-viewer.open { display: flex; }
+        .image-viewer img { max-width: min(1200px, 94vw); max-height: 88vh; object-fit: contain; border-radius: var(--radius-sm); box-shadow: var(--shadow-lg); }
+        .image-viewer-close { position: absolute; top: 1.25rem; right: 1.25rem; width: 44px; height: 44px; border: 1px solid var(--glass-border); border-radius: 50%; background: rgba(10,10,10,0.7); color: var(--blanc); cursor: pointer; font-size: 1.5rem; }
+        .image-viewer-close:hover, .image-viewer-close:focus-visible { border-color: var(--accent); color: var(--accent); }
+        .image-viewer-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+        body.modal-open { overflow: hidden; }
+
         .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1200px; margin: 0 auto; }
         .about-image { position: relative; border-radius: var(--radius-lg); overflow: hidden; background: var(--gris-fonce); aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; color: var(--gris); font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.05); transition: transform var(--transition-slow); }
         .about-image:hover { transform: translateY(-4px); }
+        .about-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .about-image .icon-large { font-size: 4rem; opacity: 0.2; }
         .about-image::before { content: ''; position: absolute; top: 20px; left: 20px; right: -20px; bottom: -20px; border: 2px solid var(--accent); border-radius: var(--radius-lg); z-index: -1; opacity: 0.15; transition: all var(--transition-slow); }
         .about-image:hover::before { opacity: 0.3; transform: translate(-5px, -5px); }
@@ -299,6 +322,15 @@
     <ul class="skills-list" id="skills-list" role="list"></ul> <!-- Changement : ul -->
 </section>
 
+<section id="realisations" class="realisations-section" aria-labelledby="realisations-title">
+    <div class="section-header reveal">
+        <span class="section-tag">Portfolio</span>
+        <h2 class="section-title" id="realisations-title">Mes réalisations</h2>
+        <p class="section-subtitle">Découvrez une sélection de mes travaux en support et maintenance informatique.</p>
+    </div>
+    <div class="gallery-grid realisations-grid" id="realisations-grid"></div>
+</section>
+
 <section id="apropos" aria-labelledby="apropos-title">
     <div class="about-grid">
         <div class="about-image reveal" id="about-image" aria-hidden="true"></div>
@@ -313,6 +345,18 @@
     <div class="social-links reveal" id="social-links"></div>
 </section>
 </main>
+
+<div class="gallery-modal" id="supportGallery" role="dialog" aria-modal="true" aria-labelledby="supportGalleryTitle" aria-hidden="true">
+    <div class="gallery-dialog">
+        <button class="gallery-close" id="galleryClose" type="button" aria-label="Fermer la galerie">&times;</button>
+        <h2 id="supportGalleryTitle">Support &amp; Maintenance</h2>
+        <div class="gallery-grid" id="galleryGrid"></div>
+    </div>
+</div>
+<div class="image-viewer" id="imageViewer" role="dialog" aria-modal="true" aria-label="Image agrandie" aria-hidden="true">
+    <button class="image-viewer-close" id="imageViewerClose" type="button" aria-label="Fermer l'image agrandie">&times;</button>
+    <img id="imageViewerImage" src="" alt="">
+</div>
 
 <footer id="footer"></footer>
 <button class="back-to-top" id="backToTop" aria-label="Retour en haut de page">↑</button>
@@ -361,6 +405,7 @@ const fallbackData = {
         "links": [
             {"label": "Projets", "href": "#projets"},
             {"label": "Compétences", "href": "#competences"},
+            {"label": "Réalisations", "href": "#realisations"},
             {"label": "À propos", "href": "#apropos"},
             {"label": "Contact", "href": "#contact"}
         ]
@@ -409,7 +454,8 @@ const fallbackData = {
             "En parallèle, je conçois des <strong>sites web et des plateformes digitales</strong> pour des clients en Côte d'Ivoire — du portfolio créatif à la plateforme de mise en relation artisans–clients. Rigoureux, réactif et orienté résultat, je mets ma polyvalence au service des équipes pour garantir la continuité et la performance des systèmes informatiques."
         ],
         "tags": ["HTML / CSS / JS", "Responsive Design", "Windows / Linux", "Maintenance", "Réseaux", "n8n", "Cloud", "Beemo Niv.3", "Photoshop", "Proteus"],
-        "avatar": "👨‍💻"
+        "avatar": "👨‍💻",
+        "image": "richmond1.png"
     },
     "contact": {
         "section_tag": "Contact",
@@ -428,7 +474,7 @@ const fallbackData = {
                 {"id": "message", "label": "Message", "type": "textarea", "placeholder": "Décrivez votre projet ou votre demande...", "required": true, "autocomplete": null}
             ],
             "submit_label": "Envoyer le message",
-            "success_msg": "Message envoyé avec succès ! Je vous répondrai dans les plus brefs délais.",
+            "success_msg": "Votre logiciel de messagerie va s'ouvrir pour envoyer le message.",
             "error_msg_empty": "Veuillez remplir tous les champs.",
             "error_msg_email": "Veuillez entrer une adresse email valide."
         },
@@ -528,18 +574,27 @@ function renderCompetences(data) {
         '<h2 class="section-title" id="competences-title">' + c.title + '</h2>' +
         '<p class="section-subtitle">' + c.subtitle + '</p>';
 
-    document.getElementById('skills-list').innerHTML = c.items.map(item => 
-        '<li class="skill-card reveal" role="listitem">' +
+    document.getElementById('skills-list').innerHTML = c.items.map(item => {
+        const isGalleryTrigger = item.titre === 'Support & Maintenance';
+        return '<li class="skill-card reveal' + (isGalleryTrigger ? ' gallery-trigger' : '') + '" role="' + (isGalleryTrigger ? 'button' : 'listitem') + '"' + (isGalleryTrigger ? ' tabindex="0" aria-haspopup="dialog"' : '') + '>' +
             '<span class="skill-icon" aria-hidden="true">' + item.icon + '</span>' +
             '<h3>' + item.titre + '</h3>' +
             '<p>' + item.desc + '</p>' +
-        '</li>'
-    ).join('');
+        '</li>';
+    }).join('');
+}
+
+function renderRealisations() {
+    document.getElementById('realisations-grid').innerHTML = Array.from({ length: 20 }, (_, index) => {
+        const imageNumber = index + 1;
+        return '<img src="rich' + imageNumber + '.jpg" alt="Réalisation de support et maintenance ' + imageNumber + '" loading="lazy" tabindex="0">';
+    }).join('');
 }
 
 function renderAbout(data) {
     const a = data.about;
-    document.getElementById('about-image').innerHTML = '<span class="icon-large">' + a.avatar + '</span>';
+    const aboutImage = document.getElementById('about-image');
+    aboutImage.innerHTML = a.image ? '<img src="' + a.image + '" alt="Portrait de Richmond KONAN">' : '';
     document.getElementById('about-content').innerHTML = 
         '<span class="section-tag">' + a.section_tag + '</span>' +
         '<h2 id="apropos-title">' + a.title + '</h2>' +
@@ -567,14 +622,12 @@ function renderContact(data) {
     }).join('');
 
     const f = c.form;
-    // Ajout d'un action exemple (Formspree) – vous pouvez remplacer l'URL
-    const actionUrl = 'https://formspree.io/f/votre_id'; // ← à personnaliser
     document.getElementById('contact-form-wrapper').innerHTML = 
-        '<form id="contactForm" method="POST" action="' + actionUrl + '" novalidate>' +
+        '<form id="contactForm" novalidate>' +
             f.fields.map(field => {
                 const input = field.type === 'textarea' 
-                    ? '<textarea id="' + field.id + '" name="' + field.id + '" placeholder="' + field.placeholder + '" required></textarea>'
-                    : '<input type="' + field.type + '" id="' + field.id + '" name="' + field.id + '" placeholder="' + field.placeholder + '" required' + (field.autocomplete ? ' autocomplete="' + field.autocomplete + '"' : '') + '>';
+                    ? '<textarea id="' + field.id + '" name="' + field.id + '" placeholder="' + field.placeholder + '"' + (field.required ? ' required' : '') + (field.autocomplete ? ' autocomplete="' + field.autocomplete + '"' : '') + '></textarea>'
+                    : '<input type="' + field.type + '" id="' + field.id + '" name="' + field.id + '" placeholder="' + field.placeholder + '"' + (field.required ? ' required' : '') + (field.autocomplete ? ' autocomplete="' + field.autocomplete + '"' : '') + '>';
                 return '<div class="form-group">' +
                     '<label for="' + field.id + '">' + field.label + '</label>' + input +
                 '</div>';
@@ -611,6 +664,7 @@ function initPortfolio(data) {
     renderHero(data);
     renderProjets(data);
     renderCompetences(data);
+    renderRealisations();
     renderAbout(data);
     renderContact(data);
     renderFooter(data);
@@ -618,6 +672,8 @@ function initPortfolio(data) {
 }
 
 function initInteractions() {
+    initSupportGallery();
+
     // Menu mobile
     const toggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
@@ -713,11 +769,13 @@ function initInteractions() {
                 showStatus(window.formMessages.error_email, 'error');
                 return;
             }
-            // Sinon, le formulaire sera soumis normalement vers l'action définie.
-            // Si vous utilisez un service comme Formspree, le message sera envoyé.
-            // Pour une simulation sans backend, on peut conserver le comportement précédent.
-            // Mais ici, on laisse la soumission réelle.
-            // Pour éviter une redirection, on peut utiliser fetch, mais on garde simple.
+            e.preventDefault();
+            const recipient = 'konanrichmond1234@gmail.com';
+            const mailto = 'mailto:' + recipient +
+                '?subject=' + encodeURIComponent(subject) +
+                '&body=' + encodeURIComponent('Nom : ' + name + '\nEmail : ' + email + '\n\n' + message);
+            window.location.href = mailto;
+            showStatus(window.formMessages.success, 'success');
         });
     }
 
@@ -726,6 +784,82 @@ function initInteractions() {
         formStatus.className = 'form-status ' + type;
         setTimeout(() => { formStatus.className = 'form-status'; }, 6000);
     }
+}
+
+function initSupportGallery() {
+    const trigger = document.querySelector('.gallery-trigger');
+    const modal = document.getElementById('supportGallery');
+    const closeButton = document.getElementById('galleryClose');
+    const galleryGrid = document.getElementById('galleryGrid');
+    const realisationsGrid = document.getElementById('realisations-grid');
+    const imageViewer = document.getElementById('imageViewer');
+    const imageViewerImage = document.getElementById('imageViewerImage');
+    const imageViewerClose = document.getElementById('imageViewerClose');
+    if (!trigger || !modal || !closeButton || !galleryGrid || !realisationsGrid || !imageViewer || !imageViewerImage || !imageViewerClose) return;
+
+    galleryGrid.innerHTML = Array.from({ length: 20 }, (_, index) => {
+        const imageNumber = index + 1;
+        return '<img src="rich' + imageNumber + '.jpg" alt="Capture de support et maintenance ' + imageNumber + '" loading="lazy" tabindex="0">';
+    }).join('');
+
+    const openImage = image => {
+        imageViewerImage.src = image.src;
+        imageViewerImage.alt = image.alt;
+        imageViewer.classList.add('open');
+        imageViewer.setAttribute('aria-hidden', 'false');
+        imageViewerClose.focus();
+    };
+    const closeImage = () => {
+        imageViewer.classList.remove('open');
+        imageViewer.setAttribute('aria-hidden', 'true');
+        imageViewerImage.src = '';
+    };
+
+    const openGallery = () => {
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+        closeButton.focus();
+    };
+    const closeGallery = () => {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+        trigger.focus();
+    };
+
+    trigger.addEventListener('click', openGallery);
+    trigger.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            openGallery();
+        }
+    });
+    realisationsGrid.innerHTML = galleryGrid.innerHTML;
+    document.querySelectorAll('#galleryGrid img, #realisations-grid img').forEach(image => {
+        image.addEventListener('click', () => openImage(image));
+        image.addEventListener('keydown', event => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                openImage(image);
+            }
+        });
+    });
+    closeButton.addEventListener('click', closeGallery);
+    modal.addEventListener('click', event => {
+        if (event.target === modal) closeGallery();
+    });
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && imageViewer.classList.contains('open')) {
+            closeImage();
+        } else if (event.key === 'Escape' && modal.classList.contains('open')) {
+            closeGallery();
+        }
+    });
+    imageViewerClose.addEventListener('click', closeImage);
+    imageViewer.addEventListener('click', event => {
+        if (event.target === imageViewer) closeImage();
+    });
 }
 
 // ===== CHARGEMENT DES DONNÉES =====
