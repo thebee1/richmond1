@@ -62,6 +62,10 @@
         "href": "#competences"
       },
       {
+        "label": "Réalisations",
+        "href": "#realisations"
+      },
+      {
         "label": "À propos",
         "href": "#apropos"
       },
@@ -87,7 +91,8 @@
         "style": "secondary"
       }
     ],
-    "avatar": "👨‍💻"
+    "avatar": "👨‍💻",
+    "image": "richmond2.png"
   },
   "projets": {
     "section_tag": "Réalisations",
@@ -212,7 +217,8 @@
       "Photoshop",
       "Proteus"
     ],
-    "avatar": "👨‍💻"
+    "avatar": "👨‍💻",
+    "image": "richmond1.png"
   },
   "contact": {
     "section_tag": "Contact",
@@ -277,7 +283,7 @@
         }
       ],
       "submit_label": "Envoyer le message",
-      "success_msg": "Message envoyé avec succès ! Je vous répondrai dans les plus brefs délais.",
+      "success_msg": "Votre logiciel de messagerie va s'ouvrir pour envoyer le message.",
       "error_msg_empty": "Veuillez remplir tous les champs.",
       "error_msg_email": "Veuillez entrer une adresse email valide."
     },
