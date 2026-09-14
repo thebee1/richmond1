@@ -39,7 +39,7 @@
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"></noscript>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>">
+    <link rel="icon" type="image/png" href="logo.png">
 
     <!-- PWA Manifest -->
     <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiUmljaG1vbmQgS09OQU4gLSBQb3J0Zm9saW8iLCJzaG9ydF9uYW1lIjoiUmljaG1vbmQgS09OQU4iLCJzdGFydF91cmwiOiIuIiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiIzBhMGEwYSIsInRoZW1lX2NvbG9yIjoiI2M5YTk2ZSJ9">
@@ -92,9 +92,11 @@
         }
         nav.scrolled { height: var(--nav-height-scrolled); background: rgba(16,16,16,0.92); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
 
-        .logo { font-family: 'Playfair Display', Georgia, serif; font-size: 1.5rem; font-weight: 400; color: var(--blanc); text-decoration: none; letter-spacing: 1px; transition: transform var(--transition-fast); }
+        .logo { display: inline-flex; align-items: center; gap: 0.65rem; font-family: 'Playfair Display', Georgia, serif; font-size: 1.5rem; font-weight: 400; color: var(--blanc); text-decoration: none; letter-spacing: 1px; transition: transform var(--transition-fast); }
+        .logo img { width: 42px; height: 42px; object-fit: contain; display: block; }
         .logo:hover { transform: scale(1.02); }
-        .logo span { color: var(--accent); }
+        .logo > span { color: var(--blanc); }
+        .logo > span > span { color: var(--accent); }
 
         .nav-links { display: flex; gap: 2.5rem; list-style: none; }
         .nav-links a { color: var(--gris); text-decoration: none; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.8px; text-transform: uppercase; transition: color var(--transition-base); position: relative; padding: 0.5rem 0; }
@@ -302,7 +304,7 @@
 <a href="#accueil" class="skip-link">Aller au contenu principal</a>
 
 <nav id="navbar" role="navigation" aria-label="Navigation principale">
-    <a href="#accueil" class="logo">Rich<span>mond</span></a>
+    <a href="#accueil" class="logo"><img src="logo.png" alt="Logo KR"><span>Rich<span>mond</span></span></a>
     <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navLinks">☰</button>
     <ul class="nav-links" id="navLinks" role="menubar"></ul>
 </nav>
@@ -519,7 +521,7 @@ function setMeta(data) {
 function renderNav(data) {
     const nav = data.nav;
     const logoText = nav.logo.replace(nav.logo_accent, '');
-    document.querySelector('.logo').innerHTML = logoText + '<span>' + nav.logo_accent + '</span>';
+    document.querySelector('.logo').innerHTML = '<img src="logo.png" alt="Logo KR"><span>' + logoText + '<span>' + nav.logo_accent + '</span></span>';
     const ul = document.getElementById('navLinks');
     ul.innerHTML = nav.links.map(l => 
         '<li role="none"><a href="' + l.href + '" role="menuitem">' + l.label + '</a></li>'
