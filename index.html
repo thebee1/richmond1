@@ -129,6 +129,7 @@
         .btn-secondary:hover { border-color: rgba(255,255,255,0.35); background: rgba(255,255,255,0.08); transform: translateY(-2px); }
 
         .hero-image { position: absolute; right: 5%; top: 50%; transform: translateY(-50%); width: 380px; height: 480px; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.02); backdrop-filter: blur(12px); box-shadow: var(--shadow-lg); animation: fadeIn 1s ease 0.5s both; display: flex; align-items: center; justify-content: center; z-index: 1; }
+        .hero-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .hero-image .avatar-placeholder { font-size: 5rem; opacity: 0.35; color: var(--accent); filter: drop-shadow(0 0 30px rgba(201,169,110,0.2)); }
         .hero-image::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 45%; background: linear-gradient(to top, var(--noir), transparent); }
 
@@ -418,7 +419,8 @@ const fallbackData = {
             {"label": "Voir mes projets", "href": "#projets", "style": "primary"},
             {"label": "Me contacter", "href": "#contact", "style": "secondary"}
         ],
-        "avatar": "👨‍💻"
+        "avatar": "👨‍💻",
+        "image": "richmond2.png"
     },
     "projets": {
         "section_tag": "Réalisations",
@@ -532,7 +534,9 @@ function renderHero(data) {
         '<div class="hero-buttons">' + h.buttons.map(b => 
             '<a href="' + b.href + '" class="btn btn-' + b.style + '">' + b.label + '</a>'
         ).join('') + '</div>';
-    document.getElementById('hero-image').innerHTML = '<span class="avatar-placeholder">' + h.avatar + '</span>';
+    document.getElementById('hero-image').innerHTML = h.image
+        ? '<img src="' + h.image + '" alt="Portrait de Richmond KONAN">'
+        : '';
 }
 
 function renderProjets(data) {
