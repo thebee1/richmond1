@@ -518,7 +518,8 @@ function setMeta(data) {
 
 function renderNav(data) {
     const nav = data.nav;
-    document.querySelector('.logo').innerHTML = nav.logo + '<span>' + nav.logo_accent + '</span>';
+    const logoText = nav.logo.replace(nav.logo_accent, '');
+    document.querySelector('.logo').innerHTML = logoText + '<span>' + nav.logo_accent + '</span>';
     const ul = document.getElementById('navLinks');
     ul.innerHTML = nav.links.map(l => 
         '<li role="none"><a href="' + l.href + '" role="menuitem">' + l.label + '</a></li>'
