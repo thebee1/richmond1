@@ -4,7 +4,7 @@
     "description": "Portfolio de Richmond KONAN, technicien supérieur en informatique certifié Beemo Niv.3 et n8n. Créateur de sites web, plateformes et solutions IT en Côte d'Ivoire.",
     "keywords": "Richmond KONAN, technicien informatique, Côte d'Ivoire, Abidjan, développement web, maintenance, réseaux, n8n, cloud, Beemo, portfolio",
     "author": "Richmond KONAN",
-    "theme_color": "#0a0a0a",
+    "theme_color": "#ffffff",
     "locale": "fr_FR",
     "og": {
       "type": "website",
@@ -92,7 +92,7 @@
       }
     ],
     "avatar": "👨‍💻",
-    "image": "richmond2.png"
+    "image": "richmond.png"
   },
   "projets": {
     "section_tag": "Réalisations",
@@ -110,14 +110,14 @@
         "image": "zamblé.png"
       },
       {
-        "id": "tarification",
-        "categorie": "Page Commerciale",
-        "titre": "Tarification INTELLIGENZ",
-        "description": "Grille tarifaire complète pour une société IT. Forfaits maintenance (50K–300K FCFA/mois), prestations à la carte, antivirus Kaspersky et ERP Odoo.",
-        "icon": "💰",
-        "url": "https://thebee1.github.io/Tarification/",
+        "id": "richmondfood",
+        "categorie": "Site de Restauration",
+        "titre": "RICHMOND FOOD",
+        "description": "Site de restaurant et de livraison à Abidjan, avec présentation des plats et commande en ligne.",
+        "icon": "🍽️",
+        "url": "https://thebee1.github.io/-RICHMONDFOOD/",
         "external": true,
-        "image": "Tarification.png"
+        "image": null
       },
       {
         "id": "fosco",
@@ -138,6 +138,16 @@
         "url": "https://thebee1.github.io/IG.Tech/index.html",
         "external": true,
         "image": null
+      },
+      {
+        "id": "tarification",
+        "categorie": "Page Commerciale",
+        "titre": "Tarification INTELLIGENZ",
+        "description": "Grille tarifaire complète pour une société IT. Forfaits maintenance (50K–300K FCFA/mois), prestations à la carte, antivirus Kaspersky et ERP Odoo.",
+        "icon": "💰",
+        "url": "https://thebee1.github.io/Tarification/",
+        "external": true,
+        "image": "Tarification.png"
       },
       {
         "id": "n8n",
